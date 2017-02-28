@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvips]{epsfig}
+\usepackage[T1]{fontenc}
+\usepackage{cite} % [2,3,4] --> [2--4]
+\usepackage{shadow}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{listings}  
+\usepackage{minted}
+
+\renewcommand\thesection{Q (\alph{section})}
+
+
+\usetikzlibrary{arrows, shapes}
+
+\setcounter{tocdepth}{2}
+
+
+
+
+\title{ FYS-4460 \\ Project 3 }
+\author{Gullik Vetvik Killie}
+		
+
+\begin{document}
+\lstset{language=Matlab}
+
+\maketitle
+
+\tableofcontents
+
+\section{}
+	Using these features, you should make a program to calculate P(p, L) for various
+	p. Hint: you can use either BoundingBox or intersect and union to find
+	the spanning cluster. How robust is your algorithm to changes in boundary
+	conditions? Could you do a rectangular grid where Lx \( >> \) Ly? Could you do
+	a more complicated set of boundaries? Can you think of a simple method to
+	ensure that you can calculate P for any boundary geometry?
+	\\
+	\textbf{Answer}
+	
+	\inputminted{Matlab}{ percolation.m }
+
+\section{}
+	We know that when \(p > p_c\), the probability \(P(p, L)\) for a given site to belong to
+	the percolation cluster, has the form \(P(p,L) \propto |p-p_c|^\beta\)
+
+	Use your program to find an expression for \(\beta \). For this you may need that
+	pc = 0.59275.
+	\\
+	\textbf{Answer}
+	Since \(P\) is proportional to \( |p-p_c|^\beta \) a logarithmic regression can be used.
+
+	\begin{align}
+		P(p,L) &\propto |p-p_c|^\beta \\
+		\log{(P(p,L))} &\propto \beta \log{(p-p_c)}
+	\end{align}
+
+
+\end{document}
